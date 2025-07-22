@@ -1,0 +1,33 @@
+{
+  "name": "novacareautomation",
+  "version": "1.0.0",
+  "description": "This repository contains the end-to-end (E2E) automated test suite for the NovoCare web application, implemented using [Cypress](https://www.cypress.io/).",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wdiazqa/Novacare-Automation.git"
+  },
+  "keywords": [
+    "cypress",
+    "automation",
+    "e2e-testing",
+    "qa",
+    "novocare",
+    "web-testing",
+    "javascript",
+    "testing-framework"
+  ],
+  "author": "Walter Diaz",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/wdiazqa/Novacare-Automation/issues"
+  },
+  "homepage": "https://github.com/wdiazqa/Novacare-Automation#readme",
+  "devDependencies": {
+    "cypress": "^14.5.2"
+  }
+}
