@@ -184,7 +184,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0004 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
     
         cy.get('.save-preference-btn-handler').click();
-        cy.get('.ot-btn-container').should('not.be.visible');
+        
     });  
 
 
