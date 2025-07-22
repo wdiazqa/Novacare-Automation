@@ -1,0 +1,31 @@
+{
+  "auth": {
+    "username": "balarengaswamy1",
+    "access_key": "zf5ab4pMu8qHtRStDBRL"
+  },
+  "browsers": [{
+      "browser": "chrome",
+      "os": "Windows 10",
+      "versions": ["latest"]
+    }
+  ],
+  "run_settings": {
+    "cypress_config_file": "./cypress.config.js",
+   
+    "cypress_version": "13.latest",
+    "npm_dependencies": {
+      "cypress": "^14.5.2"
+    },
+    "project_name": "NovaCare Automation",
+    "build_name": "Build No.1",
+    "parallels": 5,
+    "exclude": ["some-folder/test.js", "static/*.pdf"]
+
+
+  },
+
+  "connection_settings": {
+    "local": true,
+    "local_identifier": "novacare-tunnel"
+  }
+}
