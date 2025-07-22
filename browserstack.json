@@ -3,8 +3,19 @@
     "username": "balarengaswamy1",
     "access_key": "zf5ab4pMu8qHtRStDBRL"
   },
-  "browsers": [{
+  "browsers": [
+    {
       "browser": "chrome",
+      "os": "Windows 10",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "firefox",
+      "os": "Windows 10",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "edge",
       "os": "Windows 10",
       "versions": ["latest"]
     }
