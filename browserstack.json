@@ -6,20 +6,36 @@
   "browsers": [
     {
       "browser": "chrome",
-      "os": "Windows 10",
+      "os": "Windows 11",
       "versions": ["latest"]
     },
     {
       "browser": "firefox",
-      "os": "Windows 10",
+      "os": "Windows 11",
       "versions": ["latest"]
     },
     {
       "browser": "edge",
-      "os": "Windows 10",
+      "os": "Windows 11",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "chrome",
+      "os": "OS X Ventura",
+      "versions": ["latest"]
+    },
+
+    {
+      "browser": "firefox",
+      "os": "OS X Ventura",
+      "versions": ["latest"]
+    },
+
+    {
+      "browser": "edge",
+      "os": "OS X Ventura",
       "versions": ["latest"]
     }
-    
   ],
   "run_settings": {
     "cypress_config_file": "./cypress.config.js",
@@ -29,7 +45,7 @@
       "cypress": "^14.5.2"
     },
     "project_name": "NovaCare Automation",
-    "build_name": "Build No.1",
+    "build_name": "novacare-automation",
     "parallels": 5,
     "exclude": ["some-folder/test.js", "static/*.pdf"]
   },
