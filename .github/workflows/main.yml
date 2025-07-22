@@ -1,4 +1,4 @@
-name: Cypress Cross-Browser Tests
+name: Cypress on BrowserStack with Local Tunnel
 
 on:
   push:
@@ -6,12 +6,8 @@ on:
       - main
 
 jobs:
-  cross-browser:
+  browserstack-run:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        browser: [chrome, firefox, electron]
 
     steps:
       - name: Checkout repo
@@ -25,10 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Cypress tests in ${{ matrix.browser }} and record to Cypress Cloud
-        uses: cypress-io/github-action@v6
-        with:
-          browser: ${{ matrix.browser }}
-          record: true
+      - name: Run Cypress tests on BrowserStack with local tunnel
+        run: npx browserstack-cypress run
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
