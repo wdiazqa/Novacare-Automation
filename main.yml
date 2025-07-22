@@ -1,8 +1,6 @@
 name: Cypress on BrowserStack with Local Tunnel
 
-on:
-  push:
-  pull_request:
+on: push
 
 jobs:
   browserstack-run:
