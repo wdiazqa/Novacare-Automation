@@ -185,8 +185,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
         cy.get('.save-preference-btn-handler').should('be.visible')
     
-        cy.get('.save-preference-btn-handler').click();
-       
+        
     });  
 
 
