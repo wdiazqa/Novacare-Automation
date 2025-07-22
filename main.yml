@@ -3,7 +3,7 @@ name: Cypress on BrowserStack with Local Tunnel
 on:
   push:
     branches:
-      - main
+      - "**"
 
 jobs:
   browserstack-run:
