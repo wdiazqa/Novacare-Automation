@@ -1,4 +1,4 @@
-name: Cypress on BrowserStack with Local Tunnel
+name: Cypress on BrowserStack
 
 on: push
 
