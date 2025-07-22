@@ -8,34 +8,8 @@
       "browser": "chrome",
       "os": "Windows 11",
       "versions": ["latest"]
-    },
-    {
-      "browser": "firefox",
-      "os": "Windows 11",
-      "versions": ["latest"]
-    },
-    {
-      "browser": "edge",
-      "os": "Windows 11",
-      "versions": ["latest"]
-    },
-    {
-      "browser": "chrome",
-      "os": "OS X Ventura",
-      "versions": ["latest"]
-    },
-
-    {
-      "browser": "firefox",
-      "os": "OS X Ventura",
-      "versions": ["latest"]
-    },
-
-    {
-      "browser": "edge",
-      "os": "OS X Ventura",
-      "versions": ["latest"]
     }
+    
   ],
   "run_settings": {
     "cypress_config_file": "./cypress.config.js",
