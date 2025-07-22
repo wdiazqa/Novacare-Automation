@@ -9,8 +9,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
-# Environment variables
+local.log
+log/
+results/
+# Environment variablesß
 .env
 .env.local
 .env.*.local
@@ -44,3 +46,10 @@ build/
 # Lock files (optional, if you don't want to commit them)
 # package-lock.json
 # yarn.lock
+
+# BrowserStack CLI logs/cache
+browserstack-artifacts/
+browserstack-report/
+bstack-error.log
+bstack-log.log
+npm_install_debug.log
