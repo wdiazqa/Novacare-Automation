@@ -1,29 +1,46 @@
-name: Cypress on BrowserStack with Local Tunnel
+name: Run Cypress tests on BrowserStack
 
-on: push
+on:
+  push:
+    branches: [main]
+  pull_request:
 
 jobs:
-  browserstack-run:
+  cypress-browserstack:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run Cypress tests on BrowserStack with local tunnel
+      - name: Download BrowserStackLocal binary
+        run: |
+          curl -sS -o BrowserStackLocal.zip "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
+          unzip BrowserStackLocal.zip
+
+      - name: Start BrowserStackLocal tunnel
+        run: |
+          chmod +x BrowserStackLocal
+          ./BrowserStackLocal --key ${{ secrets.BROWSERSTACK_ACCESS_KEY }} --local-identifier novacare-tunnel > browserstack.log &
+        env:
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+      - name: Wait for tunnel to be ready
+        run: sleep 10
+
+      - name: Run Cypress tests on BrowserStack
         run: npx browserstack-cypress run
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          BROWSERSTACK_PROJECT_NAME: "Novacare-Automation"
-          BROWSERSTACK_BUILD_NAME: "${{ github.workflow }} - ${{ github.run_number }}"
+
           
 
