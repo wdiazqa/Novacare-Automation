@@ -22,13 +22,14 @@ jobs:
       - name: Run Cypress tests on BrowserStack with local tunnel
         run: npx browserstack-cypress run
         env:
+          PERCY_ENABLED: false
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           BROWSERSTACK_PROJECT_NAME: "NovoCare-Automation"
           BROWSERSTACK_BUILD_NAME: "${{ github.workflow }} - ${{ github.run_number }}"
 
   percy-visual-tests:
-    runs-on: self-hosted  # o ubuntu-latest si tu sitio no necesita VPN
+    runs-on: self-hosted # usa ubuntu-latest si no requiere VPN
 
     steps:
       - name: Checkout repo
@@ -39,13 +40,19 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Install Chrome (required for Percy)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run Percy visual tests
         run: |
           echo "Iniciando Percy visual tests..."
-          PERCY_ENABLED=true npx percy exec -- cypress run
+          npx percy exec -- cypress run
         env:
           PERCY_ENABLED: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_BROWSER_EXECUTABLE: "/usr/bin/google-chrome"
