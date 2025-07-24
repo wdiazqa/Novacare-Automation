@@ -44,6 +44,8 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('.privacy-notice-link').should('be.visible')
           .and('include.text', this.qaqc.yourPrivacyLink);
 
+          cy.percySnapshot();
+
         cy.get('.privacy-notice-link').should('have.attr', 'href', 'https://www.novonordisk-us.com/cookie-policy.html');
         cy.get('.privacy-notice-link').click();
 
@@ -71,7 +73,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0001 > .ot-grp-hdr1 > .ot-tgl-cntr').should('be.visible')
           .and('have.text', this.qaqc.strictlyNecessaryCookiesStatus);
 
-        
+        cy.percySnapshot();
 
   });
 
@@ -97,6 +99,8 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
         cy.get('#ot-desc-id-C0003 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
           .and('have.text', this.qaqc.functionalityCookiesStatus2);
+
+          cy.percySnapshot();
 
    });
 
@@ -124,6 +128,8 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0005 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
         cy.get('#ot-desc-id-C0005 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
           .and('have.text', this.qaqc.socialMediaCookiesStatus2);
+
+          cy.percySnapshot();
   });
 
   it('Validates the Performance Cookies section inside Customize Cookies', function () {
@@ -150,6 +156,8 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0002 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
         cy.get('#ot-desc-id-C0002 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
           .and('have.text', this.qaqc.performanceCookiesStatus2);
+
+          cy.percySnapshot();
 
 
    });
@@ -178,6 +186,8 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0004 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
         cy.get('#ot-desc-id-C0004 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
           .and('have.text', this.qaqc.advertisingCookiesStatus2);
+
+          cy.percySnapshot();
 
     });
 

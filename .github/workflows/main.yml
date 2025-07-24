@@ -1,6 +1,7 @@
-name: Cypress on BrowserStack with Local Tunnel
+name: Cypress on BrowserStack with Local Tunnel + Percy
 
 on: push
+  
 
 jobs:
   browserstack-run:
@@ -25,5 +26,25 @@ jobs:
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           BROWSERSTACK_PROJECT_NAME: "NovoCare-Automation"
           BROWSERSTACK_BUILD_NAME: "${{ github.workflow }} - ${{ github.run_number }}"
-          
 
+  percy-visual-tests:
+    runs-on: self-hosted  # o ubuntu-latest si tu sitio no necesita VPN
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Percy visual tests
+        run: |
+          echo "Iniciando Percy visual tests..."
+          PERCY_ENABLED=true npx percy exec -- cypress run
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
