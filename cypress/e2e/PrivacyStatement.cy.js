@@ -20,6 +20,8 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#onetrust-accept-btn-handler').should('be.visible')
         .and('have.text', this.qaqc.acceptAllCookiesButton);
 
+        cy.percySnapshot();
+
   });
 
   it('Validates the Your Privacy section inside Customize Cookies', function () {
