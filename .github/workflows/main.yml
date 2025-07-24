@@ -47,4 +47,5 @@ jobs:
           echo "Iniciando Percy visual tests..."
           PERCY_ENABLED=true npx percy exec -- cypress run
         env:
+          PERCY_ENABLED: true
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
