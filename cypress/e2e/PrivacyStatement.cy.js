@@ -1,6 +1,7 @@
 describe('Visual and Functional Validation of the Privacy Statement', () => {
 
   beforeEach(function () {
+
         cy.visit('https://novocare.prb.nnittest.com/');
         cy.fixture('privacyStatement').as('qaqc');
   });
@@ -19,50 +20,54 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#onetrust-accept-btn-handler').should('be.visible')
         .and('have.text', this.qaqc.acceptAllCookiesButton);
 
-        cy.percySnapshot('01 - Modal de Cookies Visible');
-
-
   });
 
   it('Validates the Your Privacy section inside Customize Cookies', function () {
 
         cy.get('#onetrust-pc-btn-handler').click();
+        
+        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
+          .and('be.visible');
+        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+       
         cy.get('.ot-abt-tab > .category-menu-switch-handler').should('be.visible')
-        .and('have.text', this.qaqc.yourPrivacyTitle);    
+          .and('have.text', this.qaqc.yourPrivacyTitle);    
         
         cy.get('#ot-pvcy-hdr').should('be.visible')
-        .and('have.text', this.qaqc.yourPrivacyTitle);   
+          .and('have.text', this.qaqc.yourPrivacyTitle);   
         
         cy.get('#ot-pc-desc').should('be.visible')
-        .and('include.text', this.qaqc.yourPrivacyDescription);
+          .and('include.text', this.qaqc.yourPrivacyDescription);
     
         cy.get('.privacy-notice-link').should('be.visible')
-        .and('include.text', this.qaqc.yourPrivacyLink);
+          .and('include.text', this.qaqc.yourPrivacyLink);
 
         cy.get('.privacy-notice-link').should('have.attr', 'href', 'https://www.novonordisk-us.com/cookie-policy.html');
         cy.get('.privacy-notice-link').click();
 
-       
-    
-   
   });
 
 
   it('Validates the Strictly Necessary Cookies section inside Customize Cookies', function () {
 
         cy.get('#onetrust-pc-btn-handler').click();
+
+        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
+          .and('be.visible');
+        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+  
         cy.get('.ot-always-active-group > .category-menu-switch-handler').click();
         cy.get('.ot-always-active-group > .category-menu-switch-handler').should('be.visible')
-        .and('have.text', this.qaqc.strictlyNecessaryCookiesTitle);
+          .and('have.text', this.qaqc.strictlyNecessaryCookiesTitle);
 
         cy.get('#ot-desc-id-C0001 > .ot-grp-hdr1 > .ot-cat-header').should('be.visible')
-        .and('have.text', this.qaqc.strictlyNecessaryCookiesTitle);
+          .and('have.text', this.qaqc.strictlyNecessaryCookiesTitle);
 
         cy.get('#ot-desc-id-C0001 > .ot-grp-desc').should('be.visible')
-        .and('include.text', this.qaqc.strictlyNecessaryCookiesDescription);
+          .and('include.text', this.qaqc.strictlyNecessaryCookiesDescription);
 
         cy.get('#ot-desc-id-C0001 > .ot-grp-hdr1 > .ot-tgl-cntr').should('be.visible')
-        .and('have.text', this.qaqc.strictlyNecessaryCookiesStatus);
+          .and('have.text', this.qaqc.strictlyNecessaryCookiesStatus);
 
         
 
@@ -71,84 +76,96 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
    it('Validates the Functionality Cookies section inside Customize Cookies', function () {
    
         cy.get('#onetrust-pc-btn-handler').click();
+        
+        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
+          .and('be.visible');
+        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+  
         cy.get('[data-optanongroupid="C0003"] > .category-menu-switch-handler').click();
         cy.get('[data-optanongroupid="C0003"] > .category-menu-switch-handler').should('be.visible')
-        .and('have.text', this.qaqc.functionalityCookiesTitle);
+          .and('have.text', this.qaqc.functionalityCookiesTitle);
 
         cy.get('#ot-desc-id-C0003 > .ot-grp-desc').should('be.visible')
-        .and('have.text', this.qaqc.functionalityCookiesDescription);
+          .and('have.text', this.qaqc.functionalityCookiesDescription);
 
         cy.get('#ot-desc-id-C0003 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
-        .and('have.text', this.qaqc.functionalityCookiesStatus1);
+          .and('have.text', this.qaqc.functionalityCookiesStatus1);
 
         cy.get('#ot-desc-id-C0003 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click()
 
         cy.get('#ot-desc-id-C0003 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
-        .and('have.text', this.qaqc.functionalityCookiesStatus2);
-
-
+          .and('have.text', this.qaqc.functionalityCookiesStatus2);
 
    });
 
    it('Validates the Social Media Cookiess section inside Customize Cookies', function () {
 
         cy.get('#onetrust-pc-btn-handler').click();
+        
+         cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
+          .and('be.visible');
+         cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+ 
         cy.get('[data-optanongroupid="C0005"] > .category-menu-switch-handler').click();
         cy.get('[data-optanongroupid="C0005"] > .category-menu-switch-handler').should('be.visible')
-        .and('have.text', this.qaqc.socialMediaCookiesTitle);
+          .and('have.text', this.qaqc.socialMediaCookiesTitle);
     
         cy.get('#ot-desc-id-C0005 > .ot-grp-hdr1 > .ot-cat-header').should('be.visible')
-        .and('have.text', this.qaqc.socialMediaCookiesTitle);
+          .and('have.text', this.qaqc.socialMediaCookiesTitle);
 
         cy.get('#ot-desc-id-C0005 > .ot-grp-desc').should('be.visible')
-        .and('include.text', this.qaqc.socialMediaCookiesDescription);
+          .and('include.text', this.qaqc.socialMediaCookiesDescription);
 
         cy.get('#ot-desc-id-C0005 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
-        .and('have.text', this.qaqc.socialMediaCookiesStatus1);
-
+          .and('have.text', this.qaqc.socialMediaCookiesStatus1);
 
         cy.get('#ot-desc-id-C0005 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
         cy.get('#ot-desc-id-C0005 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
-        .and('have.text', this.qaqc.socialMediaCookiesStatus2);
-
-    
-      
-
+          .and('have.text', this.qaqc.socialMediaCookiesStatus2);
   });
 
   it('Validates the Performance Cookies section inside Customize Cookies', function () {
 
         cy.get('#onetrust-pc-btn-handler').click();
+
+        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
+          .and('be.visible');
+        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+  
         cy.get('[data-optanongroupid="C0002"] > .category-menu-switch-handler').click();
         cy.get('[data-optanongroupid="C0002"] > .category-menu-switch-handler').should('be.visible')
-        .and('have.text', this.qaqc.performanceCookiesTitle);
+          .and('have.text', this.qaqc.performanceCookiesTitle);
 
         cy.get('#ot-desc-id-C0002 > .ot-grp-hdr1 > .ot-cat-header').should('be.visible')
-        .and('have.text', this.qaqc.performanceCookiesTitle);
+          .and('have.text', this.qaqc.performanceCookiesTitle);
 
         cy.get('#ot-desc-id-C0002 > .ot-grp-desc').should('be.visible')
-        .and('include.text', this.qaqc.performanceCookiesDescription);
+          .and('include.text', this.qaqc.performanceCookiesDescription);
 
         cy.get('#ot-desc-id-C0002 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
-        .and('have.text', this.qaqc.performanceCookiesStatus1);
-
+          .and('have.text', this.qaqc.performanceCookiesStatus1);
 
         cy.get('#ot-desc-id-C0002 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
         cy.get('#ot-desc-id-C0002 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
-        .and('have.text', this.qaqc.performanceCookiesStatus2);
+          .and('have.text', this.qaqc.performanceCookiesStatus2);
 
 
    });
    
     it('Validates the Advertising & Targeting Cookies section inside Customize Cookies', function () {
        
-        cy.get('#onetrust-pc-btn-handler').click();
+         cy.get('#onetrust-pc-btn-handler').click();
+        
+         cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
+          .and('be.visible');
+         cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+  
         cy.get('[data-optanongroupid="C0004"] > .category-menu-switch-handler').click();
         cy.get('[data-optanongroupid="C0004"] > .category-menu-switch-handler').should('be.visible')
           .and('have.text', this.qaqc.advertisingCookiesTitle);
         
         cy.get('#ot-desc-id-C0004 > .ot-grp-hdr1 > .ot-cat-header').should('be.visible')
-         .and('have.text', this.qaqc.advertisingCookiesTitle);
+          .and('have.text', this.qaqc.advertisingCookiesTitle);
 
         cy.get('#ot-desc-id-C0004 > .ot-grp-desc').should('be.visible')
           .and('include.text', this.qaqc.advertisingCookiesDescription);
@@ -156,19 +173,20 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0004 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
           .and('have.text', this.qaqc.advertisingCookiesStatus1);
 
-
         cy.get('#ot-desc-id-C0004 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
         cy.get('#ot-desc-id-C0004 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
           .and('have.text', this.qaqc.advertisingCookiesStatus2);
-
-
 
     });
 
     it('Acceptance of all customized cookie options', function () {
 
         cy.get('#onetrust-pc-btn-handler').click();
-       
+        
+        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
+          .and('be.visible');
+        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+ 
         cy.get('.ot-always-active-group > .category-menu-switch-handler').click();
 
         cy.get('[data-optanongroupid="C0003"] > .category-menu-switch-handler').click();
@@ -185,7 +203,6 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
         cy.get('.save-preference-btn-handler').should('be.visible')
     
-        
     });  
 
 
