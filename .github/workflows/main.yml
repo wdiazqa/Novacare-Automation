@@ -1,4 +1,4 @@
-name: Cypress on BrowserStack with Local Tunnel
+name: NovoCare Automation
 
 on: push
 
@@ -25,5 +25,3 @@ jobs:
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           BROWSERSTACK_PROJECT_NAME: "NovoCare-Automation"
           BROWSERSTACK_BUILD_NAME: "${{ github.workflow }} - ${{ github.run_number }}"
-          
-

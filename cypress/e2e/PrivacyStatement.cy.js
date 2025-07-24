@@ -20,7 +20,6 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#onetrust-accept-btn-handler').should('be.visible')
         .and('have.text', this.qaqc.acceptAllCookiesButton);
 
-        cy.percySnapshot();
 
   });
 
@@ -71,7 +70,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0001 > .ot-grp-hdr1 > .ot-tgl-cntr').should('be.visible')
           .and('have.text', this.qaqc.strictlyNecessaryCookiesStatus);
 
-        
+
 
   });
 
@@ -97,6 +96,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
         cy.get('#ot-desc-id-C0003 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
           .and('have.text', this.qaqc.functionalityCookiesStatus2);
+
 
    });
 
@@ -124,6 +124,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0005 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
         cy.get('#ot-desc-id-C0005 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
           .and('have.text', this.qaqc.socialMediaCookiesStatus2);
+
   });
 
   it('Validates the Performance Cookies section inside Customize Cookies', function () {
@@ -150,7 +151,6 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0002 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
         cy.get('#ot-desc-id-C0002 > .ot-grp-hdr1 > .ot-tgl > .ot-label-status').should('be.visible')
           .and('have.text', this.qaqc.performanceCookiesStatus2);
-
 
    });
    
