@@ -6,10 +6,49 @@
   "browsers": [
     {
       "browser": "chrome",
+      "os": "Windows 10",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "firefox",
+      "os": "Windows 10",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "edge",
+      "os": "Windows 10",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "edge",
       "os": "Windows 11",
       "versions": ["latest"]
+    },
+    {
+      "browser": "firefox",
+      "os": "Windows 11",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "chrome",
+      "os": "Windows 11",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "edge",
+      "os": "OS X Catalina",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "chrome",
+      "os": "OS X Catalina",
+      "versions": ["latest"]
+    },
+    {
+      "browser": "firefox",
+      "os": "OS X Catalina",
+      "versions": ["latest"]
     }
-    
   ],
   "run_settings": {
     "cypress_config_file": "./cypress.config.js",
@@ -18,9 +57,9 @@
     "npm_dependencies": {
       "cypress": "^14.5.2"
     },
-    "project_name": "NovaCare Automation",
-    "build_name": "novacare-automation",
-    "parallels": 5,
+    "project_name": "NovoCare-Automation",
+    "build_name": "NovoCare",
+    "parallels": 2,
     "exclude": ["some-folder/test.js", "static/*.pdf"]
   },
 
