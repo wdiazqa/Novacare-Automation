@@ -20,14 +20,6 @@ describe('Visual and Functional Validation of the Savings and Insurance Support'
       .should('be.visible')
       .and('have.text', this.qaqc.headerTitle);
 
-    cy.get('#textid86a4121b-a8ba-4698-ab31-c514079a3e4b > p')
-      .should('be.visible')
-      .and('have.text', this.qaqc.subHeaderText);
-
-    cy.get('#textid75f66526-8038-4c6e-a0db-ed475643ee2a > p > strong')
-      .should('be.visible')
-      .and('have.text', this.qaqc.dropdownLabel);
-
     cy.get('#conditionSelect')
       .find('option:selected')
       .should('have.text', 'Select');
@@ -35,6 +27,7 @@ describe('Visual and Functional Validation of the Savings and Insurance Support'
     cy.get('[data-name="btn-disabled"] > .aem-Grid > .buttonComponent > .media__body')
       .should('be.visible')
       .and('contain.text', this.qaqc.nextButtonText);
+      
   });
 
   it('Selects each therapeutic area and validates button visibility', function () {

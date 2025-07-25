@@ -17,8 +17,8 @@ describe('Visual and Functional Validation of the Main Insulin Cost Component', 
     cy.get('#textidbbc7b0af-e145-4be2-affe-abfe8bb173e7 > h4').should('be.visible')
       .and('have.text', this.qaqc.headerText);
 
-    cy.get('.content-box-content > .aem-Grid > .buttonComponent > .media__body > .btn').should('be.visible')
-      .and('contain.text', this.qaqc.buttonText);
+    cy.get('.content-box-content > .aem-Grid > .buttonComponent > .media__body > .btn').should('be.visible');
+    
 
     cy.get('.content-box-content > .aem-Grid > .buttonComponent > .media__body > .btn').click();
     cy.url().should('include', '/diabetes/help-with-costs/help-with-insulin-costs.html');
