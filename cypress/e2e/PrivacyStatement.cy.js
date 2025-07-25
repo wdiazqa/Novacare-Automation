@@ -1,3 +1,4 @@
+
 describe('Visual and Functional Validation of the Privacy Statement', () => {
 
   beforeEach(function () {
@@ -23,13 +24,36 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
   });
 
-  it('Validates the Your Privacy section inside Customize Cookies', function () {
+   it('Validation of the Reject All functionality', function () {
 
-        cy.get('#onetrust-pc-btn-handler').click();
+        cy.get('#onetrust-group-container').should('be.visible');
+        cy.get('#onetrust-button-group-parent').should('be.visible');
         
-        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
-          .and('be.visible');
-        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+        cy.get('#onetrust-reject-all-handler').should('be.visible')
+          .click();
+        
+        cy.get('#onetrust-group-container').should('not.be.visible');
+        cy.get('#onetrust-button-group-parent').should('not.be.visible');
+
+  });
+  
+  it('Validation of the Accept All Cookies functionality', function () {
+
+        cy.get('#onetrust-group-container').should('be.visible');
+        cy.get('#onetrust-button-group-parent').should('be.visible');
+        
+        cy.get('#onetrust-accept-btn-handler').should('be.visible')
+          .click();
+        
+        cy.get('#onetrust-group-container').should('not.be.visible');
+        cy.get('#onetrust-button-group-parent').should('not.be.visible');
+
+  });
+
+
+  it('Validates the Your Privacy section inside Customize Cookies', function () {
+        
+        cy.openCustomizeCookiesModal();
        
         cy.get('.ot-abt-tab > .category-menu-switch-handler').should('be.visible')
           .and('have.text', this.qaqc.yourPrivacyTitle);    
@@ -51,11 +75,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
   it('Validates the Strictly Necessary Cookies section inside Customize Cookies', function () {
 
-        cy.get('#onetrust-pc-btn-handler').click();
-
-        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
-          .and('be.visible');
-        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+        cy.openCustomizeCookiesModal();
   
         cy.get('.ot-always-active-group > .category-menu-switch-handler').click();
         cy.get('.ot-always-active-group > .category-menu-switch-handler').should('be.visible')
@@ -76,11 +96,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
    it('Validates the Functionality Cookies section inside Customize Cookies', function () {
    
-        cy.get('#onetrust-pc-btn-handler').click();
-        
-        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
-          .and('be.visible');
-        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+        cy.openCustomizeCookiesModal();
   
         cy.get('[data-optanongroupid="C0003"] > .category-menu-switch-handler').click();
         cy.get('[data-optanongroupid="C0003"] > .category-menu-switch-handler').should('be.visible')
@@ -100,13 +116,9 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
    });
 
-   it('Validates the Social Media Cookiess section inside Customize Cookies', function () {
+   it('Validates the Social Media Cookies section inside Customize Cookies', function () {
 
-        cy.get('#onetrust-pc-btn-handler').click();
-        
-         cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
-          .and('be.visible');
-         cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+        cy.openCustomizeCookiesModal();
  
         cy.get('[data-optanongroupid="C0005"] > .category-menu-switch-handler').click();
         cy.get('[data-optanongroupid="C0005"] > .category-menu-switch-handler').should('be.visible')
@@ -129,11 +141,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
   it('Validates the Performance Cookies section inside Customize Cookies', function () {
 
-        cy.get('#onetrust-pc-btn-handler').click();
-
-        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
-          .and('be.visible');
-        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+        cy.openCustomizeCookiesModal();
   
         cy.get('[data-optanongroupid="C0002"] > .category-menu-switch-handler').click();
         cy.get('[data-optanongroupid="C0002"] > .category-menu-switch-handler').should('be.visible')
@@ -156,11 +164,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
    
     it('Validates the Advertising & Targeting Cookies section inside Customize Cookies', function () {
        
-         cy.get('#onetrust-pc-btn-handler').click();
-        
-         cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
-          .and('be.visible');
-         cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+        cy.openCustomizeCookiesModal();
   
         cy.get('[data-optanongroupid="C0004"] > .category-menu-switch-handler').click();
         cy.get('[data-optanongroupid="C0004"] > .category-menu-switch-handler').should('be.visible')
@@ -183,11 +187,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
     it('Acceptance of all customized cookie options', function () {
 
-        cy.get('#onetrust-pc-btn-handler').click();
-        
-        cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist')
-          .and('be.visible');
-        cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1', { timeout: 20000 });
+        cy.openCustomizeCookiesModal();
  
         cy.get('.ot-always-active-group > .category-menu-switch-handler').click();
 
@@ -204,6 +204,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#ot-desc-id-C0004 > .ot-grp-hdr1 > .ot-tgl > .ot-switch > .ot-switch-nob').click();
 
         cy.get('.save-preference-btn-handler').should('be.visible')
+        cy.get('.save-preference-btn-handler').click();
     
     });  
 

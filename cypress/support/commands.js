@@ -24,3 +24,34 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+Cypress.Commands.add('openCustomizeCookiesModal', () => {
+  cy.get('#onetrust-pc-btn-handler').click();
+  cy.get('#onetrust-pc-sdk', { timeout: 15000 }).should('exist').and('be.visible');
+  cy.get('#onetrust-pc-sdk').should('have.css', 'opacity', '1');
+});
+
+Cypress.Commands.add('acceptanceCookies', () => {
+  cy.get('#onetrust-group-container').should('be.visible');
+  cy.get('#onetrust-button-group-parent').should('be.visible');
+  cy.get('#onetrust-accept-btn-handler').click();
+ 
+});
+
+Cypress.Commands.add('clickSeeOurPrograms', () => {
+  cy.get('.content-box-content > .aem-Grid > .buttonComponent > .media__body > .btn').should('be.visible')
+  cy.get('.content-box-content > .aem-Grid > .buttonComponent > .media__body > .btn').click();
+  cy.url().should('include', '/diabetes/help-with-costs/help-with-insulin-costs.html');
+ 
+});
+
+Cypress.Commands.add('goMyInsulinRxForm', () => {
+  cy.get('#onetrust-group-container').should('be.visible');
+  cy.get('#onetrust-button-group-parent').should('be.visible');
+  cy.get('#onetrust-accept-btn-handler').click();
+  cy.get('.content-box-content > .aem-Grid > .buttonComponent > .media__body > .btn').should('be.visible')
+  cy.get('.content-box-content > .aem-Grid > .buttonComponent > .media__body > .btn').click();
+  cy.url().should('include', '/diabetes/help-with-costs/help-with-insulin-costs.html');
+  cy.get('.content-box-1753421560011 > .content-box-content > .aem-Grid > .buttonComponent > .media__body').click()
+  cy.url().should('include', '/diabetes/help-with-costs/help-with-insulin-costs/myinsulinrx.html');
+ 
+});
