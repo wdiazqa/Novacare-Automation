@@ -8,61 +8,19 @@
       "browser": "chrome",
       "os": "Windows 10",
       "versions": ["latest"]
-    },
-    {
-      "browser": "firefox",
-      "os": "Windows 10",
-      "versions": ["latest"]
-    },
-    {
-      "browser": "edge",
-      "os": "Windows 10",
-      "versions": ["latest"]
-    },
-    {
-      "browser": "edge",
-      "os": "Windows 11",
-      "versions": ["latest"]
-    },
-    {
-      "browser": "firefox",
-      "os": "Windows 11",
-      "versions": ["latest"]
-    },
-    {
-      "browser": "chrome",
-      "os": "Windows 11",
-      "versions": ["latest"]
-    },
-    {
-      "browser": "edge",
-      "os": "OS X Catalina",
-      "versions": ["latest"]
-    },
-    {
-      "browser": "chrome",
-      "os": "OS X Catalina",
-      "versions": ["latest"]
-    },
-    {
-      "browser": "firefox",
-      "os": "OS X Catalina",
-      "versions": ["latest"]
     }
   ],
   "run_settings": {
     "cypress_config_file": "./cypress.config.js",
-
     "cypress_version": "13.latest",
     "npm_dependencies": {
       "cypress": "^14.5.2"
     },
     "project_name": "NovoCare-Automation",
-    "build_name": "NovoCare",
+    "build_name": "NovoCare - ${GITHUB_RUN_NUMBER}",
     "parallels": 2,
     "exclude": ["some-folder/test.js", "static/*.pdf"]
   },
-
   "connection_settings": {
     "local": true,
     "local_identifier": "novacare-tunnel"

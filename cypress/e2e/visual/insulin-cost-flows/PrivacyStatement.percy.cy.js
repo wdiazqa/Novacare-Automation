@@ -1,3 +1,4 @@
+import '@percy/cypress';
 
 describe('Visual and Functional Validation of the Privacy Statement', () => {
 
@@ -21,7 +22,8 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.get('#onetrust-accept-btn-handler').should('be.visible')
         .and('have.text', this.qaqc.acceptAllCookiesButton);
 
-
+         cy.percySnapshot('MyInsulinRx Snapshot');
+      
   });
 
    it('Validation of the Reject All functionality', function () {

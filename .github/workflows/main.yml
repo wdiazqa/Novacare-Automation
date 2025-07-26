@@ -1,4 +1,4 @@
-name: NovoCare Automation
+name: NovaCare QA Automation
 
 on: push
 
@@ -19,9 +19,19 @@ jobs:
         run: npm install
 
       - name: Run Cypress tests on BrowserStack with local tunnel
-        run: npx browserstack-cypress run
+        run: |
+          echo "Iniciando pruebas automatizadas..."
+          npx browserstack-cypress run 2>&1 | tee browserstack-output.log
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           BROWSERSTACK_PROJECT_NAME: "NovoCare-Automation"
           BROWSERSTACK_BUILD_NAME: "${{ github.workflow }} - ${{ github.run_number }}"
+          DISABLE_PERCY: true
+
+      - name: Upload BrowserStack logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browserstack-logs
+          path: browserstack-output.log
