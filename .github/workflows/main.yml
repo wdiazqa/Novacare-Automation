@@ -2,8 +2,6 @@ name: NovaCare QA Automation
 
 on:
   push:
-    branches-ignore:
-      - main  
   workflow_dispatch:  
 
 jobs:
@@ -47,8 +45,7 @@ jobs:
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           BROWSERSTACK_PROJECT_NAME: "NovoCare-Automation"
           BROWSERSTACK_BUILD_NAME: "${{ github.workflow }} - ${{ github.run_number }}"
-          DISABLE_PERCY: true
-
+        
       - name: Upload BrowserStack logs
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,4 +1,3 @@
-
 {
   "auth": {
     "username": "balarengaswamy1",
@@ -10,18 +9,21 @@
       "os": "Windows 10",
       "versions": ["latest"]
     }
+    
   ],
   "run_settings": {
     "cypress_config_file": "./cypress.config.js",
+
     "cypress_version": "13.latest",
     "npm_dependencies": {
       "cypress": "^14.5.2"
     },
     "project_name": "NovoCare-Automation",
-    "build_name": "NovoCare - ${GITHUB_RUN_NUMBER}",
+    "build_name": "NovoCare",
     "parallels": 2,
     "exclude": ["some-folder/test.js", "static/*.pdf"]
   },
+
   "connection_settings": {
     "local": true,
     "local_identifier": "novacare-tunnel"
