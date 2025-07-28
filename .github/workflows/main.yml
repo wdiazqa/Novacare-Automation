@@ -127,4 +127,4 @@ jobs:
           CYPRESS_PROJECT_ID: abc123  # Solo si no está definido en cypress.config.js
         run: |
           echo "Running Cypress tests and uploading to Cypress Cloud..."
-          npx cypress run --record --key $CYPRESS_RECORD_KEY --spec "cypress/e2e/functional/**/*.cy.js
+          npx cypress run --record --key $CYPRESS_RECORD_KEY --spec "cypress/e2e/functional/**/*.cy.js"
