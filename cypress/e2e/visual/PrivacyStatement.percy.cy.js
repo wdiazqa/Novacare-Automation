@@ -1,8 +1,6 @@
 import '@percy/cypress';
 
-
-
-describe('Visual and Functional Validation of the Privacy Statement', () => {
+describe('Visual and Functional Vahgflidation of the Privacy Statement', () => {
 
   beforeEach(function () {
 
@@ -10,8 +8,8 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.fixture('privacyStatement').as('qaqc');
   });
 
-  it('UI Text and Comvponent Visibility Validation', function () {
-
+  it('UI Text and Comvponent Visibhghility Validation', function () {
+ß
         cy.get('#onetrust-group-container').should('be.visible');
         cy.get('#onetrust-policy-text').should('have.text', this.qaqc.modalText);
 
@@ -53,6 +51,8 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         
         cy.get('#onetrust-group-container').should('not.be.visible');
         cy.get('#onetrust-button-group-parent').should('not.be.visible');
+
+        cy.percySnapshot("fdfdfdsfdsf");
 
   });
 
