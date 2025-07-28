@@ -39,6 +39,9 @@ jobs:
           echo "BrowserStack Project: $BROWSERSTACK_PROJECT_NAME"
           echo "Build Name: $BROWSERSTACK_BUILD_NAME"
           npx browserstack-cypress run 2>&1 | tee browserstack-output.log
+          exit_code=${PIPESTATUS[0]}
+          echo "BrowserStack exit code: $exit_code"
+          exit $exit_code
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
