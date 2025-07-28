@@ -168,7 +168,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
    });
    
-    it('Validates the Advertising & Targeting Cookies section inside Customize Cookies', function () {
+    it('Validates the Advertising & Targetinytyg Cookies section inside Customize Cookies', function () {
        
         cy.openCustomizeCookiesModal();
   
