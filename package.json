@@ -4,7 +4,8 @@
   "description": "This repository contains the end-to-end (E2E) automated test suite for the NovoCare web application, implemented using [Cypress](https://www.cypress.io/).",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "test:visual": "percy exec -- cypress run --spec 'cypress/e2e/**/*.percy.cy.js'"
   },
   "repository": {
     "type": "git",
