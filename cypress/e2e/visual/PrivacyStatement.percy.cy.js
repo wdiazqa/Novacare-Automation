@@ -79,7 +79,7 @@ describe('Visual and Functional Vahgflidation of the Privacy Statement', () => {
   });
 
 
-  it('Validates the Stricfdfdtly Necessagfgy Cookies jhjhgjsection ingfgside Customize Cookies', function () {
+  it('Validates the Stricfdgfdgffdtly Necessagfgy Cookies jhjhgjsection ingfgside Customize Cookies', function () {
 
         cy.openCustomizeCookiesModal();
   
