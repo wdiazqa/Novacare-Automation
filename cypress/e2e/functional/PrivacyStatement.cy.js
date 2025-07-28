@@ -187,7 +187,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
     });
 
-    it('Acceptance of all customized cookie options', function () {
+    it('Acceptance of all customytized cookie options', function () {
 
         cy.openCustomizeCookiesModal();
  

@@ -30,7 +30,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
   });
 
-   it('Validation of the vcReject All functionality', function () {
+   it('Validation of the vcReject Allgf functionality', function () {
 
         cy.get('#onetrust-group-container').should('be.visible');
         cy.get('#onetrust-button-group-parent').should('be.visible');
