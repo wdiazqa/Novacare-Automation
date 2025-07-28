@@ -126,4 +126,16 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
         run: |
           echo "Running Cypress tests and uploading to Cypress Cloud..."
-          npx cypress run --record --key $CYPRESS_RECORD_KEY --spec "cypress/e2e/functional/**/*.cy.js"
+          echo "Command: npx cypress run --record --key \$CYPRESS_RECORD_KEY --spec \"cypress/e2e/functional/**/*.cy.js\""
+          npx cypress run --record --key $CYPRESS_RECORD_KEY --spec "cypress/e2e/functional/**/*.cy.js" 2>&1 | tee cypress-cloud-output.log
+          exit_code=${PIPESTATUS[0]}
+          echo "Cypress Cloud exit code: $exit_code"
+          exit $exit_code
+
+      - name: Upload Cypress Cloud log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-cloud-log
+          path: cypress-cloud-output.log
+

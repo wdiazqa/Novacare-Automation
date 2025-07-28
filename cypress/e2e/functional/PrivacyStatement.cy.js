@@ -96,7 +96,7 @@ describe('Visual and Fuggfgffdgnctional Valigfdgujgjhdation of the Privacy State
 
   });
 
-   it('Validates the Functionality Cookies section inside Customize Cookies', function () {
+   it('Validates the Functgfdgionality Cookies section inside Customize Cookies', function () {
    
         cy.openCustomizeCookiesModal();
   
