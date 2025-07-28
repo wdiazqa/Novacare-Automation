@@ -78,15 +78,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Chromium (if needed)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser
-
-      - name: Set Chromium path for Percy
-        run: echo "PERCY_BROWSER_EXECUTABLE=/usr/bin/chromium-browser" >> $GITHUB_ENV
+      - name: Set Percy browser path (macOS)
+        run: echo 'PERCY_BROWSER_EXECUTABLE=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' >> $GITHUB_ENV
 
       - name: Run Percy test
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-        run: npx percy exec -- cypress run --spec 'cypress/e2e/**/*.percy.cy.js
+        run: npx percy exec -- cypress run --spec 'cypress/e2e/visual/**/*.percy.cy.js'

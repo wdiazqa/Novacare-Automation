@@ -7,7 +7,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.fixture('privacyStatement').as('qaqc');
   });
 
-  it('UI Text and Comvponent Visibility Validation', function () {
+  it('UI Text and Comvponent Visibility Vgfalidation', function () {
 
         cy.get('#onetrust-group-container').should('be.visible');
         cy.get('#onetrust-policy-text').should('have.text', this.qaqc.modalText);
