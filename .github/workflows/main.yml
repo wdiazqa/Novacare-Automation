@@ -63,7 +63,7 @@ jobs:
             browserstack.json
 
   visual-tests:
-    name: Run Percy visual tests
+    name: Run Cypress tests on Percy
     runs-on: self-hosted
 
     steps:
@@ -102,3 +102,29 @@ jobs:
         with:
           name: percy-log
           path: percy-output.log
+
+  cloud-tests:
+    name: Run Cypress tests and upload to Cypress Cloud
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: |
+          echo "Installing project dependencies..."
+          npm install
+
+      - name: Run Cypress tests with Cloud recording
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_PROJECT_ID: abc123  # Solo si no está definido en cypress.config.js
+        run: |
+          echo "Running Cypress tests and uploading to Cypress Cloud..."
+          npx cypress run --record --key $CYPRESS_RECORD_KEY --spec 'cypress/e2e/functional/**/*.cy.js'
