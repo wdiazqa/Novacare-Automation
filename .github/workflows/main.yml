@@ -2,7 +2,7 @@ name: NovaCare QA Automation
 
 on:
   push:
-  workflow_dispatch:  
+  workflow_dispatch:
 
 jobs:
   browserstack-run:
@@ -36,7 +36,7 @@ jobs:
           echo "BrowserStack Username: $BROWSERSTACK_USERNAME"
           echo "BrowserStack Project: $BROWSERSTACK_PROJECT_NAME"
           echo "Build Name: $BROWSERSTACK_BUILD_NAME"
-          npx browserstack-cypress run 2>&1 | tee browserstack-output.log
+          npx browserstack-cypress run --spec 'cypress/e2e/functional/**/*.cy.js' 2>&1 | tee browserstack-output.log
           exit_code=${PIPESTATUS[0]}
           echo "BrowserStack exit code: $exit_code"
           exit $exit_code
@@ -45,7 +45,7 @@ jobs:
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           BROWSERSTACK_PROJECT_NAME: "NovoCare-Automation"
           BROWSERSTACK_BUILD_NAME: "${{ github.workflow }} - ${{ github.run_number }}"
-        
+
       - name: Upload BrowserStack logs
         if: always()
         uses: actions/upload-artifact@v4
@@ -53,16 +53,11 @@ jobs:
           name: browserstack-logs
           path: browserstack-output.log
 
-      - name: Upload Cypress screenshots
+      - name: Upload config files
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-screenshots
-          path: cypress/screenshots/**
-
-      - name: Upload Cypress videos
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-videos
-          path: cypress/videos
+          name: config-files
+          path: |
+            cypress.config.js
+            browserstack.json
