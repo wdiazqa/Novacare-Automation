@@ -1,5 +1,5 @@
 
-describe('Visual and Functional Validation of the Privacy Statement', () => {
+describe('Visual and Functional Valigfdgdation of the Privacy Statement', () => {
 
   beforeEach(function () {
 

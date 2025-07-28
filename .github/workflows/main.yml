@@ -30,7 +30,7 @@ jobs:
           echo "Installing project dependencies..."
           npm install
 
-      - name: Run Cypress tests on BrowserStack with local tunnel
+      - name: Run Cypress tests on BrowserStack
         run: |
           echo "Starting automated tests on BrowserStack..."
           echo "BrowserStack Username: $BROWSERSTACK_USERNAME"
@@ -76,12 +76,29 @@ jobs:
           node-version: "18"
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          echo "Installing project dependencies..."
+          npm install
 
       - name: Set Percy browser path (macOS)
-        run: echo 'PERCY_BROWSER_EXECUTABLE=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' >> $GITHUB_ENV
+        run: |
+          echo "Setting PERCY_BROWSER_EXECUTABLE for macOS..."
+          echo 'PERCY_BROWSER_EXECUTABLE=/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' >> $GITHUB_ENV
 
-      - name: Run Percy test
+      - name: Run Percy visual tests
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-        run: npx percy exec -- cypress run --spec 'cypress/e2e/visual/**/*.percy.cy.js'
+        run: |
+          echo "Starting Percy visual test run..."
+          echo "Command: npx percy exec -- cypress run --spec 'cypress/e2e/visual/**/*.percy.cy.js'"
+          npx percy exec -- cypress run --spec 'cypress/e2e/visual/**/*.percy.cy.js' 2>&1 | tee percy-output.log
+          exit_code=${PIPESTATUS[0]}
+          echo "Percy exit code: $exit_code"
+          exit $exit_code
+
+      - name: Upload Percy log as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: percy-log
+          path: percy-output.log
