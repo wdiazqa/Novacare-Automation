@@ -1,27 +1,54 @@
-name: NovoCare Automation
+name: NovaCare QA Automation
 
-on: push
+on:
+  push:
+    branches-ignore:
+      - main  
+  workflow_dispatch:  
 
 jobs:
   browserstack-run:
+    name: Run Cypress tests on BrowserStack
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
+
+      - name: Confirm Node.js and npm versions
+        run: |
+          echo "Node.js version:"
+          node -v
+          echo "npm version:"
+          npm -v
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          echo "Installing project dependencies..."
+          npm install
 
       - name: Run Cypress tests on BrowserStack with local tunnel
-        run: npx browserstack-cypress run
+        run: |
+          echo "Starting automated tests on BrowserStack..."
+          echo "BrowserStack Username: $BROWSERSTACK_USERNAME"
+          echo "BrowserStack Project: $BROWSERSTACK_PROJECT_NAME"
+          echo "Build Name: $BROWSERSTACK_BUILD_NAME"
+          npx browserstack-cypress run 2>&1 | tee browserstack-output.log
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           BROWSERSTACK_PROJECT_NAME: "NovoCare-Automation"
           BROWSERSTACK_BUILD_NAME: "${{ github.workflow }} - ${{ github.run_number }}"
+          DISABLE_PERCY: true
+
+      - name: Upload BrowserStack logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browserstack-logs
+          path: browserstack-output.log

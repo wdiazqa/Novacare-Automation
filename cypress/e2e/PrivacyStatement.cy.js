@@ -7,7 +7,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
         cy.fixture('privacyStatement').as('qaqc');
   });
 
-  it('UI Text and Component Visibility Validation', function () {
+  it('UI Text and Comvponent Visibility Validation', function () {
 
         cy.get('#onetrust-group-container').should('be.visible');
         cy.get('#onetrust-policy-text').should('have.text', this.qaqc.modalText);
@@ -24,7 +24,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
 
   });
 
-   it('Validation of the Reject All functionality', function () {
+   it('Validation of the vcReject All functionality', function () {
 
         cy.get('#onetrust-group-container').should('be.visible');
         cy.get('#onetrust-button-group-parent').should('be.visible');
@@ -51,7 +51,7 @@ describe('Visual and Functional Validation of the Privacy Statement', () => {
   });
 
 
-  it('Validates the Your Privacy section inside Customize Cookies', function () {
+  it('Validates the Your Privavccy section inside Customize Cookies', function () {
         
         cy.openCustomizeCookiesModal();
        
